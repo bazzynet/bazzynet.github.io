@@ -166,7 +166,7 @@
             background-color: white;
             border-radius: 20px;
         }
-        .warning {
+        .warningg {
             text-align: center;
             border-radius: 20px;
             font-family: "Comfortaa", sans-serif;
@@ -352,6 +352,30 @@
             text-align: right;
             font-size: 1.2em;
         }
+        .warning {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        display: none;
+        justify-content: center;
+        width: 100%;
+        padding: 30px;
+        box-sizing: border-box;
+        background-color: yellow;
+        }
+
+        .warning--active {
+            display: flex;
+        }
+
+        .warning__text {
+            margin-right: 30px;
+        }
+
+        .warning__read {
+            display: block;
+            margin-left: 15px;
+        }
     </style>
 </head>
 <body>
@@ -462,7 +486,24 @@
                 });
             }
         });
+        const container = document.querySelector(".warning");
+    if (document.cookie.indexOf("warning") != -1) {
+		container.classList.remove("warning--active");
+	}
+
+	if (document.querySelector(".warning")) {
+	  const apply = container.querySelector(".warning__apply");
+	  apply.addEventListener("click", () => {
+	    container.classList.remove("warning--active");
+	    document.cookie = "warning=true; max-age=2592000; path=/";
+	  });
+	};
     </script>
+    <div class="warning warning--active">
+        <div class="warning__text">Привет, это журнал «Код»! Мы используем куки.</div>
+        <button class="warning__apply" type="button">OK</button>
+        <a class="warning__read" href="https://ru.wikipedia.org/wiki/Cookie" target="_blank">Что такое куки</a>
+    </div>
     <header>
             <a href="./index.html" class="logo">
                 <img class="logoImg" src="https://i.pinimg.com/736x/9e/04/22/9e0422611608b717df430aed4a52c9ad.jpg">
@@ -471,7 +512,7 @@
     <main class="all">
         <div class="cart-icon"><img class="img-cart" src="./icons8-корзина-96.png" alt=""></div>
         <div class="parw">
-            <div class="warning">
+            <div class="warningg">
                 <a href="#products"><img src="./IMG_20250412_181403_314.jpg" alt="" class="imgW"></a>
                 <h1 class="warn">NEW COLLECTION "WaSTE" IS OUT!</h1>
             </div>
