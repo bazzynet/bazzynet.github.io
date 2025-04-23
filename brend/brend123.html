@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BZ</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+    body{
+        background-color: black;
+    }
+    .product{
+        background-color: rgb(255, 255, 255);
+        color: white;
+        gap: 15px;
+        padding: 15px;
+        border-radius: 20px;
+        width: 50%;
+        flex: 1 1 200px;
+        font-family: "Comfortaa", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 700px;
+        font-style: normal;
+        transition: 0.5s;
+    }
+    .products{
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        background-color: rgb(29, 29, 29);
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-top: 5%;
+        padding-bottom: 5%;
+        margin-left: 5%;
+        margin-right: 5%;
+        border-radius: 20px;
+        font-family: "Comfortaa", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 700px;
+        font-style: normal;
+    }
+    .list{
+        display: flex;
+    }
+    .imgg{
+        border-radius: 10px;
+        width: 200px;
+        object-fit: contain;
+    }
+    .imgg1{
+        position: absolute;
+        border-radius: 10px;
+        width: 200px;
+        object-fit: contain;
+        opacity: 0;
+        transition: 0.5s;
+    }
+    .imgg1:hover{
+        opacity: 1;
+        transition: 0.5s;
+    }
+    .textt{
+        display: flex;
+        justify-content: center;
+        color: rgb(0, 0, 0);
+        text-align: center;
+        
+    }
+    .imag{
+        display: flex;
+        justify-content: center;
+    }
+    .hat{
+        margin-top: 5%;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 5%;
+        color: white;
+        display: flex;
+    }
+    .name{
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 5%;
+        margin-top: 5%;
+        color: white;
+        font-family: "Comfortaa", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 500px;
+        font-style: normal;
+    }
+    ul{
+        display: flex;
+        justify-content: right;
+        list-style: none; /*убираем маркеры списка*/
+        padding-left: 40px; 
+        align-items: center;
+    }
+    .goto{
+        width: 75%;
+        color: white;
+        text-decoration: none;
+        margin-right: 60px;
+        font-family: "Comfortaa", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 500px;
+        font-style: normal;
+        transition: 0.5s;
+    }
+    .product:hover{
+        transform: scale(1.05);
+        transition: 0.5s;
+    }
+    .goto:hover{
+        color: red;
+        transition: 0.5s;
+    }
+    footer{
+        background-color: white;
+        padding-top: 1%;
+        margin-top: 5%;
+        padding-left: 5%;
+        border-radius: 20px;
+        font-family: "Comfortaa", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 500px;
+        font-style: normal;
+        padding-bottom: 10px;
+    }
+    .tg{
+        color: black;
+        text-decoration: none;
+        font-size: 18px;
+        font-family: "Comfortaa", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 500px;
+        font-style: normal;
+        transition: 0.5s;
+    }
+    .tg:hover{
+        color: red;
+        transition: 0.5s;
+    }
+    .about{
+        padding: 1%;
+        color: white;
+        font-family: "Comfortaa", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 500px;
+        font-style: normal;
+        margin-left: 5%;
+    }
+    .logoImg{
+        width: 102px;
+
+    }
+    .parw{
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        width: 100%;
+        background-color: white;
+        border-radius: 20px;
+        
+    }
+    
+    .warning{
+        text-align: center;
+        border-radius: 20px;
+        font-family: "Comfortaa", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 500px;
+        font-style: normal;
+        font-size: 30px;
+        width: 100%;
+        object-fit: contain;
+        padding: 15px;
+    }
+    .warn{
+        color: black;
+        text-decoration: none;
+        font-size: 30px;
+        font-family: "Comfortaa", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 500px;
+        font-style: normal;
+        transition: 0.5s;
+    }
+    .imgW{
+        border-radius: 10px;
+        object-fit: contain;
+        width: 50%;
+        filter: drop-shadow(5px 5px 5px rgb(145, 145, 145));
+    }
+</style>
+<body>
+    <script>
+
+    </script>
+    <header>
+        <div class="hat">
+            <a href="./brend.html" class="logo">
+                <img class="logoImg" src="https://i.pinimg.com/736x/9e/04/22/9e0422611608b717df430aed4a52c9ad.jpg">
+            </a>
+            <div class="list">
+                <ul>
+                    <li><a href="#products" class="goto">ТОВАРЫ</a></li>
+                    <li><a href="./refund.html" class="goto">ВОЗВРАТ</a></li>
+                    <li><a href="#contacts" class="goto">КОНТАКТЫ</a></li>
+                </ul>
+            </div>    
+        </div>
+    </header>
+    <main>
+        <div class="parw">
+            <div class="warning">
+                <a href="#products"><img src="./IMG_20250412_181403_314.jpg" alt="" class="imgW"></a>
+                <h1 class="warn">NEW COLLECTION "WaSTE" IS OUT!</h1>
+            </div>
+        </div>
+        <div class="name"><h2>BZ — это бренд одежды для девушек и парней, которые не боятся выражать себя через нестандартные образы и стремятся к поиску своего уникального стиля. BZ — это про свободу, комфорт и самовыражение. BZ — ГОЛОС УЛИЧНОЙ МОДЫ.</h2>
+        </div>
+        <h1 class="about" id="products">Товары:</h1>
+        <div class="products">
+            <div class="product">
+                <a href="product1.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://i.pinimg.com/736x/c2/57/74/c25774966b610d10fd03c221c6bb06c6.jpg"  alt="">
+                    <img class="imgg1" src="https://i.pinimg.com/736x/88/74/83/8874832b3e0466ec4de2829400d2a908.jpg"  alt="">
+                    </div>
+                </a>
+                <h3 class="textt">ZIP HOODIE "N1 BAZ"</h3>
+                <p class="textt">6190 p.</p>
+            </div>
+            <div class="product">
+                <a href="product2.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://i.pinimg.com/736x/51/f3/0f/51f30fe292ae88ed996423ed39d3f6c3.jpg" alt="">
+                    <img class="imgg1" src="https://i.pinimg.com/736x/e0/9d/dc/e09ddc1f7e34dcfd9eed02cc58bd5b43.jpg" alt="">
+                    </div>
+                </a>
+                <h3 class="textt">SWEATSHIRT "N2 BZ X RAWEN"</h3>
+                <p class="textt">4990 p.</p>
+            </div>
+            <div class="product">
+                <a href="product3.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://i.pinimg.com/736x/d2/52/3b/d2523b0b00c008ac4b9a5af8277e7136.jpg" alt="">
+                    <img class="imgg1" src="https://i.pinimg.com/736x/3b/8e/8c/3b8e8c3350f646dd23a736fa65d39b6d.jpg" alt="">
+                    </div>
+                </a>
+                <h3 class="textt">HOODIE "N2 BAZ"</h3>
+                <p class="textt">5790 p.</p>
+            </div>
+            <div class="product">
+                <a href="product4.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://i.pinimg.com/736x/84/ae/2e/84ae2e7242df550802bdc07c53d789fd.jpg" alt="">
+                    <img class="imgg1" src="https://i.pinimg.com/736x/a2/d4/bf/a2d4bf130d851b07bf267c8e1bc53fbe.jpg" alt="">
+                    </div>
+                </a>
+                <h3 class="textt">HOODIE "N1 FLOWER BAZ"</h3>
+                <p class="textt">5190 p.</p>
+            </div>
+            <div class="product">
+                <a href="product5.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://i.pinimg.com/736x/42/a6/2e/42a62ef4450a7e38e499be84e714ad96.jpg" alt="">
+                    <img class="imgg1" src="https://i.pinimg.com/736x/d3/d5/81/d3d5814abef5fa56d0abdd930bf328f4.jpg" alt="">
+                    </div>
+                </a>
+                <h3 class="textt">BOMBER "NOT"</h3>
+                <p class="textt">10990 p.</p>
+            </div>
+            <div class="product">
+                <a href="product6.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://i.pinimg.com/736x/15/55/13/155513fc067389dfb9be06767b026c35.jpg" alt="">
+                    <img class="imgg1" src="https://i.pinimg.com/736x/50/1d/08/501d081176cb1b8dab58a06e95de57ef.jpg" alt="">
+                    </div>
+                </a>
+                <h3 class="textt">WATERPROOF JACKET "STORM"</h3>
+                <p class="textt">6990 р.</p>
+            </div>
+            <div class="product">
+                <a href="product1.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://avatars.mds.yandex.net/i?id=2a00000179f1fb4e3077d125d23bf7288e85-4576810-images-thumbs&n=13" alt="">
+                    </div>
+                </a>
+                <h3 class="textt">PRODUCT "NAME"</h3>
+                <p class="textt">9999 p.</p>
+            </div>
+            <div class="product">
+                <a href="product1.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://avatars.mds.yandex.net/i?id=2a00000179f1fb4e3077d125d23bf7288e85-4576810-images-thumbs&n=13" alt="">
+                    </div>
+                </a>
+                <h3 class="textt">PRODUCT "NAME"</h3>
+                <p class="textt">9999 p.</p>
+            </div>
+            <div class="product">
+                <a href="product1.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://avatars.mds.yandex.net/i?id=2a00000179f1fb4e3077d125d23bf7288e85-4576810-images-thumbs&n=13" alt="">
+                    </div>
+                </a>
+                <h3 class="textt">PRODUCT "NAME"</h3>
+                <p class="textt">9999 p.</p>
+            </div>
+            <div class="product">
+                <a href="product1.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://avatars.mds.yandex.net/i?id=2a00000179f1fb4e3077d125d23bf7288e85-4576810-images-thumbs&n=13" alt="">
+                    </div>
+                </a>
+                <h3 class="textt">PRODUCT "NAME"</h3>
+                <p class="textt">9999 p.</p>
+            </div>
+        </div>
+        
+    </main>
+    <footer id="contacts">
+        <a href="./brend.html" class="logo">
+            <img class="logoImg" src="https://i.pinimg.com/736x/9e/04/22/9e0422611608b717df430aed4a52c9ad.jpg">
+        </a>
+        <p>г. Петрозаводск, Лесной проспект д. 47</p>
+        <h2>Наши контакты</h2>
+        <h3>телефон: +7(911)434-17-24</h3>
+        <a href="https://t.me/bazzynet" class="tg"><h3>telegram</h3></a>
+    </footer>
+</body>
+</html>

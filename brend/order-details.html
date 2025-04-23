@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .order-details {
+            margin-top: 20px;
+        }
+        .order {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            position: relative;
+        }
+        .order-items {
+            list-style-type: none;
+            padding: 0;
+        }
+        .order-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .order-item img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            margin-right: 10px;
+        }
+        .order-item-details {
+            flex-grow: 1;
+        }
+        .order-item-details h3 {
+            margin: 0;
+        }
+        .order-item-details p {
+            margin: 5px 0;
+        }
+        .order-item-price,
+        .order-item-quantity {
+            width: 100px;
+            text-align: right;
+        }
+        .order-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .order-actions button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        .order-actions .mark-complete {
+            background-color: green;
+            color: white;
+        }
+        .order-actions .mark-incomplete {
+            background-color: orange;
+            color: white;
+        }
+        .order-actions .delete-order {
+            background-color: red;
+            color: white;
+        }
+        .completed {
+            background-color: #e0ffe0;
+        }
+        .total-price {
+            text-align: right;
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Детали заказа</h1>
+        <div class="order-details" id="order-details">
+            <!-- Order details will be injected here -->
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const orderDetails = document.getElementById('order-details');
+
+            function renderOrders() {
+                orderDetails.innerHTML = '';
+                if (orders.length === 0) {
+                    orderDetails.innerHTML = '<p>Заказов не найдено.</p>';
+                } else {
+                    orders.forEach((order, index) => {
+                        const orderElement = document.createElement('div');
+                        orderElement.classList.add('order');
+                        if (order.completed) {
+                            orderElement.classList.add('completed');
+                        }
+                        orderElement.innerHTML = `
+                            <p><strong>Telegram ID:</strong> ${order.telegramId}</p>
+                            <p><strong>Телефон:</strong> ${order.phone}</p>
+                            <p><strong>Email:</strong> ${order.email}</p>
+                            <h2>Товары:</h2>
+                            <ul class="order-items"></ul>
+                            <div class="order-actions">
+                            <p class="total-price"><strong>Общая сумма заказа:</strong> 0 p.</p> <!-- Элемент для отображения общей суммы -->
+                                <button class="mark-complete" data-index="${index}">Отметить выполненным</button>
+                                <button class="mark-incomplete" data-index="${index}">Отменить выполненность</button>
+                                <button class="delete-order" data-index="${index}">Удалить заказ</button>
+                            </div>
+                        `;
+
+                        const items = order.items;
+                        const orderItemsElement = orderElement.querySelector('.order-items');
+                        let totalPrice = 0;
+                        items.forEach(item => {
+                            const itemElement = document.createElement('li');
+                            itemElement.classList.add('order-item');
+                            itemElement.innerHTML = `
+                                <img src="${item.image}" alt="${item.name}">
+                                <div class="order-item-details">
+                                    <h3>${item.name}</h3>
+                                </div>
+                                <div class="order-item-price">${item.price} p.</div>
+                                <div class="order-item-quantity">x${item.quantity}</div>
+                            `;
+                            orderItemsElement.appendChild(itemElement);
+                            totalPrice += item.price * item.quantity;
+                        });
+
+                        // Обновляем отображение общей суммы
+                        orderElement.querySelector('.total-price').textContent = `Общая сумма заказа: ${totalPrice} p.`;
+
+                        orderDetails.appendChild(orderElement);
+                    });
+
+                    const markCompleteButtons = document.querySelectorAll('.mark-complete');
+                    markCompleteButtons.forEach(button => {
+                        button.addEventListener('click', function () {
+                            const index = button.getAttribute('data-index');
+                            orders[index].completed = true;
+                            localStorage.setItem('orders', JSON.stringify(orders));
+                            renderOrders();
+                        });
+                    });
+
+                    const markIncompleteButtons = document.querySelectorAll('.mark-incomplete');
+                    markIncompleteButtons.forEach(button => {
+                        button.addEventListener('click', function () {
+                            const index = button.getAttribute('data-index');
+                            orders[index].completed = false;
+                            localStorage.setItem('orders', JSON.stringify(orders));
+                            renderOrders();
+                        });
+                    });
+
+                    const deleteOrderButtons = document.querySelectorAll('.delete-order');
+                    deleteOrderButtons.forEach(button => {
+                        button.addEventListener('click', function () {
+                            const index = button.getAttribute('data-index');
+                            orders.splice(index, 1);
+                            localStorage.setItem('orders', JSON.stringify(orders));
+                            renderOrders();
+                        });
+                    });
+                }
+            }
+
+            renderOrders();
+        });
+    </script>
+</body>
+</html>

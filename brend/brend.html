@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BZ: SHOP</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+        body {
+            background-color: black;
+        }
+        .product {
+            background-color: rgb(255, 255, 255);
+            color: white;
+            gap: 15px;
+            padding: 15px;
+            border-radius: 20px;
+
+            flex: 1 1 200px;
+            font-family: "Comfortaa", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 700px;
+            font-style: normal;
+            transition: 0.5s;
+            position: relative;
+
+        }
+        .products {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            background-color: rgb(29, 29, 29);
+            padding-left: 5%;
+            padding-right: 5%;
+            padding-top: 5%;
+            padding-bottom: 5%;
+            margin-left: 5%;
+            margin-right: 5%;
+            border-radius: 20px;
+            font-family: "Comfortaa", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 700px;
+            font-style: normal;
+        }
+        .list {
+            display: flex;
+        }
+        .imgg {
+            border-radius: 10px;
+            width: 200px;
+            object-fit: contain;
+        }
+        .imgg1 {
+            position: absolute;
+            border-radius: 10px;
+            width: 200px;
+            object-fit: contain;
+            opacity: 0;
+            transition: 0.5s;
+        }
+        .imgg1:hover {
+            opacity: 1;
+            transition: 0.5s;
+        }
+        .textt {
+            display: flex;
+            justify-content: center;
+            color: rgb(0, 0, 0);
+            text-align: center;
+        }
+        .imag {
+            display: flex;
+            justify-content: center;
+        }
+
+        .hat{
+            margin-top: 5%;
+            margin-left: 5%;
+            margin-right: 5%;
+            margin-bottom: 5%;
+            color: white;
+            display: flex;
+        }
+        .name {
+            margin-left: 5%;
+            margin-right: 5%;
+            margin-bottom: 5%;
+            margin-top: 5%;
+            color: white;
+            font-family: "Comfortaa", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500px;
+            font-style: normal;
+        }
+        ul {
+            display: flex;
+            justify-content: right;
+            list-style: none; /*убираем маркеры списка*/
+            padding-left: 40px;
+            align-items: center;
+        }
+        .goto {
+            width: 75%;
+            color: white;
+            text-decoration: none;
+            margin-right: 60px;
+            font-family: "Comfortaa", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500px;
+            font-style: normal;
+            transition: 0.5s;
+        }
+        .product:hover {
+            transform: scale(1.05);
+            transition: 0.5s;
+        }
+        .goto:hover {
+            color: red;
+            transition: 0.5s;
+        }
+        footer {
+            background-color: white;
+            padding-top: 1%;
+            margin-top: 5%;
+            padding-left: 5%;
+            border-radius: 20px;
+            font-family: "Comfortaa", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500px;
+            font-style: normal;
+            padding-bottom: 10px;
+        }
+        .tg {
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            font-family: "Comfortaa", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500px;
+            font-style: normal;
+            transition: 0.5s;
+        }
+        .tg:hover {
+            color: red;
+            transition: 0.5s;
+        }
+        .about {
+            padding: 1%;
+            color: white;
+            font-family: "Comfortaa", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500px;
+            font-style: normal;
+            margin-left: 5%;
+        }
+        .logoImg {
+            width: 102px;
+        }
+        .parw {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            width: 100%;
+            background-color: white;
+            border-radius: 20px;
+        }
+        .warning {
+            text-align: center;
+            border-radius: 20px;
+            font-family: "Comfortaa", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500px;
+            font-style: normal;
+            font-size: 30px;
+            width: 100%;
+            object-fit: contain;
+            padding: 15px;
+        }
+        .warn {
+            color: black;
+            text-decoration: none;
+            font-size: 30px;
+            font-family: "Comfortaa", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500px;
+            font-style: normal;
+            transition: 0.5s;
+        }
+        .imgW {
+            border-radius: 10px;
+            object-fit: contain;
+            width: 50%;
+            filter: drop-shadow(5px 5px 5px rgb(145, 145, 145));
+        }
+        .cart-icon {
+            font-size: 18px;
+            cursor: pointer;
+            font-size: 24px;
+            color: white;
+            position: fixed;
+            top:5%;
+            right: 5%;
+            z-index: 1009;
+            background-color: rgb(100, 100, 100);
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            border-radius: 100%;
+            padding: 1%;
+            width: 3%;
+            min-width: 50px;
+        }
+        .cart-popup {
+            font-family: "Comfortaa", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500px;
+            font-style: normal;
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            width: 25%;
+            overflow: auto;
+            scrollbar-width: thin;
+            scrollbar-color: hsl(0 0% 50%);
+        }
+        .cart-popup.active {
+            display: block;
+        }
+        .cart-items {
+            font-family: "Comfortaa", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500px;
+            font-style: normal;
+            margin-bottom: 20px;
+            max-height: 300px; /* Ограничиваем высоту блока */
+            overflow-y: auto; /* Добавляем вертикальную прокрутку */
+            padding-right: 10px; /* Добавляем отступ справа для скроллбара */
+            border: 1px solid #ccc; /* Добавляем рамку для визуального отделения */
+        }
+        .cart-item {
+            font-family: "Comfortaa", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500px;
+            font-style: normal;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            align-items: center;
+            border-bottom: 1px solid #ccc; /* Добавляем нижнюю границу для отделения товаров */
+            padding-bottom: 10px; /* Добавляем отступ снизу для границы */
+        }
+        .cart-form {
+            font-family: "Comfortaa", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500px;
+            font-style: normal;
+            display: flex;
+            flex-direction: column;
+        }
+        .cart-form input {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .cart-form button {
+            padding: 10px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .add-to-cart {
+            font-family: "Comfortaa", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500px;
+            font-style: normal;
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            bottom: 10px;
+            left: 50%;
+            width: 100%;
+            margin: 1%;
+        }
+        .remove-from-cart {
+            font-family: "Comfortaa", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500px;
+            font-style: normal;
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .img-cart{
+            width: 100%;
+            object-fit: contain
+        }
+        .txt-sdek{
+            font-family: "Comfortaa", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500px;
+            font-style: normal;
+            display: flex;
+            justify-content: center;
+            color: rgb(0, 0, 0);
+            text-align: center;
+        }
+        .backHEAD{
+            background-color: black;
+            height: 100px;
+            width: 100%;
+            position: fixed;
+        }
+        .logo{
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            font-family: "Comfortaa", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500px;
+            font-style: normal;
+        }
+        .total-price {
+            font-family: "Comfortaa", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500px;
+            font-style: normal;
+            margin-top: 20px;
+            text-align: right;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cartIcon = document.querySelector('.cart-icon');
+            const cartPopup = document.querySelector('.cart-popup');
+            const cartItems = document.querySelector('.cart-items');
+            const cartForm = document.querySelector('.cart-form');
+            const totalPriceElement = document.querySelector('.total-price');
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            const cart = [];
+
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const product = button.parentElement;
+                    const productName = product.querySelector('h3').textContent;
+                    const productPrice = parseFloat(product.querySelector('p').textContent.replace(' p.', ''));
+                    const productImage = product.querySelector('img').src;
+
+                    // Проверяем, есть ли товар уже в корзине
+                    const existingItem = cart.find(item => item.name === productName);
+                    if (existingItem) {
+                        // Если товар уже в корзине, увеличиваем количество
+                        existingItem.quantity += 1;
+                    } else {
+                        // Если товара нет в корзине, добавляем его
+                        const cartItem = {
+                            name: productName,
+                            price: productPrice,
+                            image: productImage,
+                            quantity: 1 // Добавляем поле для количества
+                        };
+                        cart.push(cartItem);
+                    }
+                    updateCart();
+                });
+            });
+
+            cartIcon.addEventListener('click', function () {
+                cartPopup.classList.toggle('active');
+            });
+
+            cartForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+                const formData = new FormData(cartForm);
+                const data = {
+                    items: cart,
+                    telegramId: formData.get('telegramId'),
+                    phone: formData.get('phone'),
+                    email: formData.get('email')
+                };
+                // Сохранение данных в localStorage
+                const orders = JSON.parse(localStorage.getItem('orders')) || [];
+                orders.push(data);
+                localStorage.setItem('orders', JSON.stringify(orders));
+
+                window.location="./thxfor.html";
+                cart.length = 0;
+                updateCart();
+                cartPopup.classList.remove('active');
+            });
+
+            function updateCart() {
+                cartItems.innerHTML = '';
+                let totalPrice = 0;
+                cart.forEach((item, index) => {
+                    const cartItemElement = document.createElement('div');
+                    cartItemElement.classList.add('cart-item');
+                    cartItemElement.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" width="50">
+                        <div>
+                            <h4>${item.name}</h4>
+                            <p>${item.price} p.</p>
+                            <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-index="${index}">
+                        </div>
+                        <button class="remove-from-cart" data-index="${index}">Удалить</button>
+                    `;
+                    cartItems.appendChild(cartItemElement);
+                    totalPrice += item.price * item.quantity;
+                });
+
+                // Обновляем отображение общей суммы
+                totalPriceElement.textContent = `Итого: ${totalPrice} p.`;
+
+                const removeButtons = document.querySelectorAll('.remove-from-cart');
+                removeButtons.forEach(button => {
+                    button.addEventListener('click', function () {
+                        const index = button.getAttribute('data-index');
+                        cart.splice(index, 1);
+                        updateCart();
+                    });
+                });
+
+                // Обновляем количество товаров при изменении ввода
+                const quantityInputs = document.querySelectorAll('.quantity-input');
+                quantityInputs.forEach(input => {
+                    input.addEventListener('change', function () {
+                        const index = input.getAttribute('data-index');
+                        const newQuantity = parseInt(input.value, 10);
+                        if (newQuantity > 0) {
+                            cart[index].quantity = newQuantity;
+                        } else {
+                            cart.splice(index, 1);
+                        }
+                        updateCart();
+                    });
+                });
+            }
+        });
+    </script>
+    <header>
+            <a href="./brend.html" class="logo">
+                <img class="logoImg" src="https://i.pinimg.com/736x/9e/04/22/9e0422611608b717df430aed4a52c9ad.jpg">
+            </a>
+    </header>
+    <main class="all">
+        <div class="cart-icon"><img class="img-cart" src="./icons8-корзина-96.png" alt=""></div>
+        <div class="parw">
+            <div class="warning">
+                <a href="#products"><img src="./IMG_20250412_181403_314.jpg" alt="" class="imgW"></a>
+                <h1 class="warn">NEW COLLECTION "WaSTE" IS OUT!</h1>
+            </div>
+        </div>
+        <div class="name"><h2>BZ — это бренд одежды для девушек и парней, которые не боятся выражать себя через нестандартные образы и стремятся к поиску своего уникального стиля. BZ — это про свободу, комфорт и самовыражение. BZ — ГОЛОС УЛИЧНОЙ МОДЫ.</h2>
+        </div>
+        <h1 class="about" id="products">Товары:</h1>
+        <div class="products">
+            <div class="product">
+                <a href="product1.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://i.pinimg.com/736x/c2/57/74/c25774966b610d10fd03c221c6bb06c6.jpg"  alt="">
+                    <img class="imgg1" src="https://i.pinimg.com/736x/88/74/83/8874832b3e0466ec4de2829400d2a908.jpg"  alt="">
+                    </div>
+                </a>
+                <h3 class="textt">ZIP HOODIE "N1 BAZ"</h3>
+                <p class="textt">6490 p.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <div class="product">
+                <a href="product2.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://i.pinimg.com/736x/51/f3/0f/51f30fe292ae88ed996423ed39d3f6c3.jpg" alt="">
+                    <img class="imgg1" src="https://i.pinimg.com/736x/e0/9d/dc/e09ddc1f7e34dcfd9eed02cc58bd5b43.jpg" alt="">
+                    </div>
+                </a>
+                <h3 class="textt">SWEATSHIRT "N2 BZ X RAWEN"</h3>
+                <p class="textt">5390 p.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <div class="product">
+                <a href="product3.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://i.pinimg.com/736x/d2/52/3b/d2523b0b00c008ac4b9a5af8277e7136.jpg" alt="">
+                    <img class="imgg1" src="https://i.pinimg.com/736x/3b/8e/8c/3b8e8c3350f646dd23a736fa65d39b6d.jpg" alt="">
+                    </div>
+                </a>
+                <h3 class="textt">HOODIE "N2 BAZ"</h3>
+                <p class="textt">6190 p.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <div class="product">
+                <a href="product4.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://i.pinimg.com/736x/84/ae/2e/84ae2e7242df550802bdc07c53d789fd.jpg" alt="">
+                    <img class="imgg1" src="https://i.pinimg.com/736x/a2/d4/bf/a2d4bf130d851b07bf267c8e1bc53fbe.jpg" alt="">
+                    </div>
+                </a>
+                <h3 class="textt">HOODIE "N1 FLOWER BAZ"</h3>
+                <p class="textt">5390 p.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <div class="product">
+                <a href="product7.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://i.pinimg.com/736x/f3/b6/11/f3b6117c771a7c5bf454abf4bd41ca86.jpg" alt="">
+                    <img class="imgg1" src="https://i.pinimg.com/736x/b4/af/4b/b4af4b45fa7a4702423cc3172bdb4a99.jpg" alt="">
+                    </div>
+                </a>
+                <h3 class="textt">PANTS "N1"</h3>
+                <p class="textt">8190 p.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <div class="product">
+                <a href="product9.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://i.pinimg.com/736x/34/12/06/341206c286df8f2703bc1f4c6a8cd1c9.jpg" alt="">
+                    <img class="imgg1" src="https://i.pinimg.com/736x/54/a6/74/54a6745d9a07a9f2e8f971a2778149a1.jpg" alt="">
+                    </div>
+                </a>
+                <h3 class="textt">CROSSBODY BAG "N1 BAZ"</h3>
+                <p class="textt">4490 p.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <div class="product">
+                <a href="product9.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://i.pinimg.com/736x/71/44/39/714439a1834d2e529a7afe882f71ffc5.jpg" alt="">
+                    <img class="imgg1" src="https://i.pinimg.com/736x/cb/28/45/cb28457708554479a67f0a8d3d51de39.jpg" alt="">
+                    </div>
+                </a>
+                <h3 class="textt">BAGPACK "N1 CLD"</h3>
+                <p class="textt">5990 p.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <div class="product">
+                <a href="product8.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://i.pinimg.com/736x/9b/fc/b2/9bfcb22b849d83ce9db73e3e4146eed0.jpg" alt="">
+                    <img class="imgg1" src="https://i.pinimg.com/736x/d7/53/2e/d7532ed5937f693985709ac080452955.jpg" alt="">
+                    </div>
+                </a>
+                <h3 class="textt">ANORAK "CHARMING"</h3>
+                <p class="textt">7490 p.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <div class="product">
+                <a href="product10.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://i.pinimg.com/736x/f7/c9/56/f7c956517216ceeb099e98b1ef66ba21.jpg" alt="">
+                    <img class="imgg1" src="https://i.pinimg.com/736x/e6/18/4f/e6184facca7b1bab76ce5a6dcad8a776.jpg" alt="">
+                    </div>
+                </a>
+                <h3 class="textt">LONGSLEEVE "BURNT"</h3>
+                <p class="textt">2990 p.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <div class="product">
+                <a href="product11.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://i.pinimg.com/736x/93/e5/38/93e538a26eb422dbcd7f03a12ec06bcb.jpg" alt="">
+                    <img class="imgg1" src="https://i.pinimg.com/736x/37/ef/30/37ef30d6ab3065fc44f58b4cda33838c.jpg" alt="">
+                    </div>
+                </a>
+                <h3 class="textt">SWEATPANTS "BURNT"</h3>
+                <p class="textt">3990 p.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <div class="product">
+                <a href="product12.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://i.pinimg.com/736x/ad/cb/d8/adcbd860c588196a4194feb48fe24238.jpg" alt="">
+                    <img class="imgg1" src="https://i.pinimg.com/736x/cd/21/9e/cd219e0a15b33d1f0787f23dd0be0fd8.jpg" alt="">
+                    </div>
+                </a>
+                <h3 class="textt">HOODIE "BURNT"</h3>
+                <p class="textt">5390 p.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <div class="product">
+                <a href="product14.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://i.pinimg.com/736x/ec/be/3c/ecbe3ce2e4d59770a3e086e0917b2b6f.jpg" alt="">
+                    <img class="imgg1" src="https://i.pinimg.com/736x/38/9a/92/389a92ebd81d217b4207f397046e64cd.jpg" alt="">
+                    </div>
+                </a>
+                <h3 class="textt">SWEATSHIRT "DPRSSD"</h3>
+                <p class="textt">4490 p.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <div class="product">
+                <a href="product15.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://i.pinimg.com/736x/8e/bc/f2/8ebcf231cfa445aaf4026fedb7923882.jpg" alt="">
+                    <img class="imgg1" src="https://i.pinimg.com/736x/b7/99/ae/b799aecb9d43430f4f358ac9804321ab.jpg" alt="">
+                    </div>
+                </a>
+                <h3 class="textt">ZIP HOODIE "HARDLY AND SLOWLY"</h3>
+                <p class="textt">4990 p.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <div class="product">
+                <a href="product16.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://i.pinimg.com/736x/37/f1/da/37f1da6359b5d2cf292d57488d421ef8.jpg" alt="">
+                    <img class="imgg1" src="https://i.pinimg.com/736x/bc/89/db/bc89db43d84e77384b9a86c757f94620.jpg" alt="">
+                    </div>
+                </a>
+                <h3 class="textt">ZIP HOODIE "CROSSES"</h3>
+                <p class="textt">4990 p.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <div class="product">
+                <a href="product17.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://i.pinimg.com/736x/b4/e9/84/b4e98464247daa1ab7bfc05bedd9e2ce.jpg" alt="">
+                    <img class="imgg1" src="https://i.pinimg.com/736x/b3/e8/2f/b3e82f5ad28bd2cb1e7723bddff2c90c.jpg" alt="">
+                    </div>
+                </a>
+                <h3 class="textt">ZIP HOODIE "SCRATCH"</h3>
+                <p class="textt">4490 p.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <div class="product">
+                <a href="product18.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://i.pinimg.com/736x/52/f7/b8/52f7b8247a4becb646cb498b8fba9bda.jpg" alt="">
+                    <img class="imgg1" src="https://i.pinimg.com/736x/44/eb/72/44eb729dbc9b0ed8de1ab0ee0cecf7c8.jpg" alt="">
+                    </div>
+                </a>
+                <h3 class="textt">DOUBLE-LAYER SWEATSHIRT "SHAKE IT"</h3>
+                <p class="textt">4690 p.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <div class="product">
+                <a href="product19.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://i.pinimg.com/736x/70/40/85/7040852b709f0f7fbbd7eaa68d24354b.jpg" alt="">
+                    <img class="imgg1" src="https://i.pinimg.com/736x/7d/73/7a/7d737a6a9e7dd8740b32dbd3a4876157.jpg" alt="">
+                    </div>
+                </a>
+                <h3 class="textt">SWEATPANTS "SHAKE IT"</h3>
+                <p class="textt">3190 p.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <div class="product">
+                <a href="product20.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://i.pinimg.com/736x/c2/26/0b/c2260bb884fc1d080c0d287853fc1495.jpg" alt="">
+                    <img class="imgg1" src="https://i.pinimg.com/736x/04/1f/91/041f91e620b2ef6c1e7c523e6c9ac903.jpg" alt="">
+                    </div>
+                </a>
+                <h3 class="textt">TURTLENECK "STITCHED"</h3>
+                <p class="textt">2990 p.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <div class="product">
+                <a href="product5.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://i.pinimg.com/736x/42/a6/2e/42a62ef4450a7e38e499be84e714ad96.jpg" alt="">
+                    <img class="imgg1" src="https://i.pinimg.com/736x/d3/d5/81/d3d5814abef5fa56d0abdd930bf328f4.jpg" alt="">
+                    </div>
+                </a>
+                <h3 class="textt">BOMBER "NOT"</h3>
+                <p class="textt">10090 p.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <div class="product">
+                <a href="product6.html">
+                    <div class="imag">
+                    <img class="imgg" src="https://i.pinimg.com/736x/15/55/13/155513fc067389dfb9be06767b026c35.jpg" alt="">
+                    <img class="imgg1" src="https://i.pinimg.com/736x/50/1d/08/501d081176cb1b8dab58a06e95de57ef.jpg" alt="">
+                    </div>
+                </a>
+                <h3 class="textt">WATERPROOF JACKET "STORM"</h3>
+                <p class="textt">6390 р.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+        </div>
+    </main>
+    <div class="cart-popup">
+        <div class="cart-items"></div>
+        <p class="total-price">Итого: 0 p.</p> <!-- Элемент для отображения общей суммы -->
+        <form class="cart-form">
+            <p class="txt-sdek">Доставка СДЭКа стоит от 300-500 рублей в зависимости от вашего населенного пункта. Если в вашем н/п нет СДЭКа, мы обговорим с вами способ доставки.</p>
+            <input type="text" name="telegramId" placeholder="Ваш Telegram ID" required>
+            <input type="text" name="phone" placeholder="Телефон" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <button type="submit">Отправить заказ</button>
+        </form>
+    </div>
+</body>
+</html>
